@@ -1,2 +1,4 @@
 .idea
 README.INFO
+bin/*
+!bin/.gitkeep
