@@ -27,6 +27,7 @@ func NewUI(app *gtk.Application, mp3pl *mp3.Mp3Player) (*UI, error) {
     return ui, nil
 }
 
+// Add item to list
 func (ui *UI) AddToList(names ...string) {
     for _, name := range names {
         l, _ := gtk.LabelNew(name)
@@ -40,6 +41,7 @@ func (ui *UI) AddToList(names ...string) {
     }
 }
 
+// Initialize a main window with UI
 func (ui *UI) initWindow(app *gtk.Application) error {
     win, err := gtk.ApplicationWindowNew(app)
     if err != nil {
@@ -64,6 +66,7 @@ func (ui *UI) initWindow(app *gtk.Application) error {
     return nil
 }
 
+// Init user interface
 func (ui *UI) initInterface() {
     buttonPlay, _ := gtk.ButtonNew()
     buttonPlay.SetLabel("Play")
@@ -170,6 +173,7 @@ func (ui *UI) initInterface() {
     ui.win.Add(box)
 }
 
+// Get current filePath for playing composition
 func (ui *UI) getCurrentFilePath() string {
     listBoxRow := ui.listBox.GetSelectedRow()
     lw, err := listBoxRow.GetChild() // Label

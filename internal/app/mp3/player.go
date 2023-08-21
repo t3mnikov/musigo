@@ -8,12 +8,14 @@ import (
     "time"
 )
 
+//Mp3player struct
 type Mp3Player struct {
     filePath  string
     isPlaying bool
     player    oto.Player
 }
 
+// Mp3Player constructor
 func New() *Mp3Player {
     return &Mp3Player{
         filePath:  "",
@@ -22,6 +24,7 @@ func New() *Mp3Player {
     }
 }
 
+// Play mp3 file with filePath
 func (pl *Mp3Player) Play(filePath string) error {
     f, err := os.Open(filePath)
     if err != nil {
@@ -62,24 +65,28 @@ func (pl *Mp3Player) Play(filePath string) error {
     return nil
 }
 
+// Pause composition
 func (pl *Mp3Player) Pause() error {
     pl.player.Pause()
 
     return nil
 }
 
+// Stop composition
 func (pl *Mp3Player) Stop() error {
     pl.isPlaying = false
 
     return nil
 }
 
+// Close composition
 func (pl *Mp3Player) Close() {
     if pl.player != nil {
         pl.player.Close()
     }
 }
 
+// Check is playing composition
 func (pl *Mp3Player) IsPlaying() bool {
     return pl.isPlaying
 }

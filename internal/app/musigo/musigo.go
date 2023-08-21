@@ -12,6 +12,7 @@ const (
     appID = "org.gtk.musigo"
 )
 
+// Run player
 func RunPlayer() {
     mp3pl := mp3.New()
 
@@ -26,6 +27,7 @@ func RunPlayer() {
     os.Exit(app.Run(os.Args))
 }
 
+// Event on activate
 func onActivate(app *gtk.Application, mp3pl *mp3.Mp3Player) {
     _, err := NewUI(app, mp3pl)
     if err != nil {
@@ -33,6 +35,7 @@ func onActivate(app *gtk.Application, mp3pl *mp3.Mp3Player) {
     }
 }
 
+// Event on deactivate
 func onDeactivate(app *gtk.Application, mp3pl *mp3.Mp3Player) {
     mp3pl.Close()
 }
