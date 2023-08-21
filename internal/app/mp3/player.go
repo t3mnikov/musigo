@@ -55,7 +55,7 @@ func (pl *Mp3Player) Play(filePath string) error {
 
     fmt.Printf("Length %d[bytes]\n", d.Length())
     for {
-        time.Sleep(time.Second)
+        time.Sleep(16 * time.Millisecond)
         if !pl.isPlaying {
             break
         }

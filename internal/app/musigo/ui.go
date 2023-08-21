@@ -107,14 +107,15 @@ func (ui *UI) initInterface() {
         event := gdk.EventButton{e}
         if event.Type() == gdk.EVENT_2BUTTON_PRESS {
             fmt.Println("double clicked")
+
             filePath := ui.getCurrentFilePath()
 
-            err := ui.mp3Player.Play(filePath)
-            if err != nil {
-                log.Fatal(err)
+            if ui.mp3Player.IsPlaying() {
+                ui.mp3Player.Stop()
             }
-        }
 
+            go ui.mp3Player.Play(filePath)
+        }
     })
 
     statusBar, _ := gtk.StatusbarNew()
